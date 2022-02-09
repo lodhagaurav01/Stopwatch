@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1> StopWatch</h1>
+
+    <div class="rectangular-block">
+
+         <p id="stopwatch"></p>
+    </div>
+
+     <br>
+
+    <div class="btnn">
+    <button class="btn1" id="start" onclick="start()">Start</button>
+    <button class="btn2" id="pause" onclick="pause()">Pause</button>
+    <button class="btn3" id="reset"   onclick="reset()">Reset</button>
+    </div>
+
+
+
+
+    <script>
+
+        time=0
+        f=0
+        let newhrs=0
+            let newmin=0
+            let newsec=0
+            document.getElementById("stopwatch").innerHTML = newhrs+"h : " + newmin+"m : "+newsec + 's';
+        setInterval(count,1000)
+        function count(){
+            if(time>=0 && f===1)
+            {
+                let newhrs= Math.floor(time/(60*60));
+                let newmin= Math.floor(time/60)%60;
+                let newsec= Math.floor(time%60);
+            document.getElementById("stopwatch").innerHTML = newhrs+"h : " + newmin+"m : "+newsec + 's';
+            time++;
+            }
+
+        }
+        
+
+        function start(){
+            if (f==0 && time)
+            {f=1}
+            else{
+                f=1
+                time=1
+                count();
+                
+            }
+        }
+
+        function pause(){
+            f=0;
+        }
+
+        function reset(){
+            time=0
+            let newhrs=0
+            let newmin=0
+            let newsec=0
+            document.getElementById("stopwatch").innerHTML = newhrs+"h : " + newmin+"m : "+newsec + 's';
+            f=0
+        }
+    </script>
+</body>
+</html>
